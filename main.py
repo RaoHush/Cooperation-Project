@@ -18,7 +18,7 @@ def generate_number(r, non_zero=False):#生成安全数值
 
 
 def generate_expression(r, ops_remaining=1):
-    """核心生成函数：支持1-3个运算符，规范化表达式结构"""
+
     if ops_remaining == 0:
         num = generate_number(r)
         return format_fraction(num), num
