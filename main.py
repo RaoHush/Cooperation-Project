@@ -4,8 +4,8 @@ import fractions
 import argparse
 import re
 
-def generate_number(r, non_zero=False):
-    """安全生成数值"""
+def generate_number(r, non_zero=False):#生成安全数值
+
     if random.choice([True, False]):
         return random.randint(1 if non_zero else 0, r - 1)
     else:
@@ -64,7 +64,6 @@ def generate_expression(r, ops_remaining=1):
 
 
 def format_fraction(f):
-    """分数格式化（与原代码一致）"""
     if isinstance(f, fractions.Fraction):
         if f.denominator == 1:
             return str(f.numerator)
@@ -77,7 +76,6 @@ def format_fraction(f):
 
 
 def calculate_expression(expr):
-    """表达式计算（与原代码一致）"""
     try:
         expr = expr.replace('×', '*').replace('÷', '/')
         expr = re.sub(r"(\d+)'(\d+)/(\d+)", r"Fraction(\1*\3+\2,\3)", expr)
@@ -96,7 +94,7 @@ def calculate_expression(expr):
 
 
 def generate_problems(n, r):
-    """题目生成入口（添加去重机制）"""
+
     exercises = []
     answers = []
     seen_expressions = set()  # 用于记录已生成的表达式
@@ -128,7 +126,7 @@ def generate_problems(n, r):
         f.write("\n".join(answers))
 
 
-# grade_answers 和 main 函数保持不变（省略以节省空间）
+
 def grade_answers(exercise_file, answer_file):
     """答案校对"""
     with open(exercise_file) as f:
